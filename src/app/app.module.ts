@@ -12,6 +12,7 @@ import { DonationsComponent } from './components/donations/donations.component';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SearchComponent,
     HeaderComponent,
     FooterComponent,
+    WeatherCardComponent,
   ],
     imports: [
         BrowserModule,

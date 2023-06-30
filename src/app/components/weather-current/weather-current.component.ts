@@ -8,6 +8,7 @@ import {WeatherService} from "../../services/weather.service";
 })
 export class WeatherCurrentComponent implements OnInit {
   weather: any;
+  errorMessage: string = '';
 
   constructor(private weatherService: WeatherService) {
   }
@@ -18,7 +19,10 @@ export class WeatherCurrentComponent implements OnInit {
         console.log("dans display : ",data);
         this.weather = data;
       }
-    )
+    );
+    this.weatherService.errorSubject.subscribe((error) => {
+      this.errorMessage = error;
+    });
   }
   // weatherData: any;
   //

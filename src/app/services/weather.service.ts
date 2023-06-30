@@ -7,27 +7,35 @@ import {DayWeather} from "../models/day-weather";
   providedIn: 'root'
 })
 export class WeatherService {
-  weatherSubject: Subject<DayWeather|undefined> = new Subject<DayWeather|undefined>()
+  weatherSubject: Subject<DayWeather|undefined> = new Subject<DayWeather|undefined>();
+  errorSubject: Subject<string> = new Subject<string>();
+  API_KEY: string = process.env['API_KEY'] || '';
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+      if (!this.API_KEY) {
+      throw new Error('Clé API non définie. Veuillez définir la variable d\'environnement API_KEY.');
+    }
+  }
 
   getCurrentMeteo(city: string) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},FR&lang=FR&units=metric&appid=c93d76be506aeacd7d011be17bc6a3a8`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},FR&lang=FR&units=metric&appid=${this.API_KEY}`;
 
     this.http.get<DayWeather>(url).subscribe({
       next: data => {
         console.log("data: ", data)
         this.weatherSubject.next(data);
       },
-      error: data => {
-        console.log("erreur: ", data)
+      error: error => {
+        console.log("erreur: ", error)
         this.weatherSubject.next(undefined);
+        this.errorSubject.next('Une erreur s\'est produite lors de la récupération des données météorologiques.');
       }
     })
   }
 
 
-  // private API_KEY = 'af5f145c588d6c2be0e393807dbfdb53'; // Remplacez ceci avec votre clé API
+  // private API_KEY = ''; // Remplacez ceci avec votre clé API
   // private API_URL = 'http://api.openweathermap.org/data/2.5/weather';
   // private FORECAST_API_URL = 'http://api.openweathermap.org/data/2.5/forecast';
   //
