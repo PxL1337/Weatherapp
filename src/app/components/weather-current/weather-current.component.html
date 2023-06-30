@@ -1,0 +1,32 @@
+<div *ngIf="weather; else na">
+  <div class="flex justify-center">
+    <img [src]="'http://openweathermap.org/img/wn/'+weather.weather[0].icon+'@4x.png'"
+         class="bg-gray-300 rounded-full p-4"
+         alt="">
+  </div>
+  <div class="text-center text-4xl">
+    {{weather.weather[0].description | titlecase}}
+  </div>
+  <div class="mt-5">
+    <ul class="text-center text-xl">
+      <li class="py-2 border-b border-gray-300">Température ressentie : <span class="fs-4">{{ weather.main.feels_like }}°</span></li>
+      <li class="py-2 border-b border-gray-300">Température : {{ weather.main.temp_min }}° &gt; <span class="fs-4">{{ weather.main.temp }}°</span> &gt; {{ weather.main.temp_max }}°</li>
+      <li class="py-2 border-b border-gray-300">Humidité : {{ weather.main.humidity }}%</li>
+      <li class="py-2 border-b border-gray-300">Pression : {{ weather.main.pressure }}hPa</li>
+      <li class="py-2">Vent : {{weather.wind.deg}}° - {{weather.wind.speed}}Km/h</li>
+    </ul>
+  </div>
+  <div class="mt-5">
+    <div class="bg-teal-300 rounded text-xl font-bold text-center p-4">
+      {{weather.name | uppercase }} / {{ weather.sys.country }}
+      - Levé du soleil : {{ weather.sys.sunrise*1000 | date : 'HH:mm:ss' }}
+      - Couché du soleil : {{ weather.sys.sunset*1000 | date : 'HH:mm:ss' }}
+    </div>
+  </div>
+</div>
+
+<ng-template #na>
+  <div class="text-center p-8 text-4xl">
+    Pas de données.
+  </div>
+</ng-template>
