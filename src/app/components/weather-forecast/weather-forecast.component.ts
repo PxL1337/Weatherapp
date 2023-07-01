@@ -8,10 +8,16 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./weather-forecast.component.css'],
   animations: [
     trigger('fadeInOut', [
-      state('void', style({
-        opacity: 0
-      })),
-      transition('void <=> *', animate(1000)),
+      state('void', style({ opacity: 0 })),
+      state('*', style({ opacity: 1 })),
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('1s', style({ opacity: 0 })),
+      ])
     ])
   ]
 })
