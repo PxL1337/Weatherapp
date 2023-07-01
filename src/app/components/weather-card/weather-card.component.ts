@@ -7,5 +7,5 @@ import {DayWeather} from "../../models/day-weather";
   styleUrls: ['./weather-card.component.css']
 })
 export class WeatherCardComponent {
-  @Input() weather: DayWeather = {} as DayWeather;
+
 }

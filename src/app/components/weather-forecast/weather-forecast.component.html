@@ -1,3 +1,48 @@
-<!--<div *ngFor="let forecast of forecasts">-->
-<!--  <app-weather-card [weather]="forecast"></app-weather-card>-->
-<!--</div>-->
+<div class="forecast-slider-wrapper">
+  <button (click)="prevSlide()" class="nav-button left-button">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>
+  </button>
+
+  <div [ngSwitch]="currentSlideIndex" *ngIf="forecasts; else na" class="forecast-slider">
+    <ng-container *ngFor="let forecast of forecasts; let i = index">
+      <div *ngSwitchCase="i" class="forecast-item">
+        <div class="flex justify-center">
+          <img [src]="'http://openweathermap.org/img/wn/'+forecast.weather[0].icon+'@4x.png'"
+               class="bg-gray-300 rounded-full p-4"
+               alt="">
+        </div>
+        <div class="text-center text-4xl">
+          {{forecast.weather[0].description | titlecase}}
+        </div>
+        <div class="mt-5">
+          <ul class="text-center text-xl">
+            <li class="py-2 border-b border-gray-300">Température ressentie : <span class="fs-4">{{ forecast.main.feels_like }}°</span></li>
+            <li class="py-2 border-b border-gray-300">Température : {{ forecast.main.temp_min }}° &gt; <span class="fs-4">{{ forecast.main.temp }}°</span> &gt; {{ forecast.main.temp_max }}°</li>
+            <li class="py-2 border-b border-gray-300">Humidité : {{ forecast.main.humidity }}%</li>
+            <li class="py-2 border-b border-gray-300">Pression : {{ forecast.main.pressure }}hPa</li>
+            <li class="py-2">Vent : {{forecast.wind.deg}}° - {{forecast.wind.speed}}Km/h</li>
+          </ul>
+        </div>
+        <div class="mt-5">
+          <div class="bg-teal-300 rounded text-xl font-bold text-center p-4">
+            {{ getDateString(forecast.dt_txt) }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <button (click)="nextSlide()" class="nav-button right-button">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg>
+  </button>
+</div>
+
+<ng-template #na>
+  <div class="text-center p-8 text-4xl">
+    Pas de données.
+  </div>
+</ng-template>

@@ -13,6 +13,9 @@ import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+import { ThemeService } from './services/theme.service';
 
 
 @NgModule({
@@ -30,11 +33,14 @@ import { WeatherCardComponent } from './components/weather-card/weather-card.com
   ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule
     ],
-  providers: [],
+  providers: [
+    ThemeService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

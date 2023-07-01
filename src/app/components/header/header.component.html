@@ -1,1 +1,11 @@
-<p>header works!</p>
+<header [ngClass]="themeService.getCurrentTheme() === 'dark' ? 'dark-theme' : 'light-theme'" class="flex justify-between items-center bg-blue-700 text-white p-4">
+  <h1 class="text-2xl font-bold tracking-wider animate-bounce">{{title}}</h1>
+
+  <div>
+    <button (click)="switchView()" class="button-3d mx-2 px-4 py-2 bg-white text-blue-700 text-xl rounded-lg hover:shadow-xl transition-all duration-300">{{ buttonText }}</button>
+    <button class="button-3d mx-2 px-4 py-2 bg-white text-blue-700 rounded-lg text-xl opacity-50 cursor-not-allowed" disabled>Faire un don</button>
+    <button class="button-3d mx-2 px-4 py-2 bg-white text-blue-700 rounded-lg text-xl opacity-50 cursor-not-allowed" disabled>A Propos</button>
+    <app-settings></app-settings>
+  </div>
+</header>
+

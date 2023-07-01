@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Thème sombre */
+.dark-theme {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+/* Thème clair */
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
