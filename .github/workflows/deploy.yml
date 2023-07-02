@@ -22,7 +22,11 @@ jobs:
       - name: Build
         run: npm run build --prod
 
-      # Deploy to FTP
+      # List the contents of the build directory (for debugging)
+      - name: List build directory contents
+        run: ls -l dist/weatherapp
+
+      # Deploy to sFTP
       - name: Deploy to sFTP
         uses: garygrossgarten/github-action-scp@release
         with:
