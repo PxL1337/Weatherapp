@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {WeatherService} from "../../services/weather.service";
 import {Title} from "@angular/platform-browser";
 import {animate, style, transition, trigger} from "@angular/animations";
@@ -20,7 +20,7 @@ import {ThemeService} from "../../services/theme.service";
     ])
   ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   @Output() showCurrentEvent = new EventEmitter<void>();
   @Output() showForecastEvent = new EventEmitter<void>();
 

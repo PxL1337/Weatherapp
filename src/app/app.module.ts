@@ -7,7 +7,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { WeatherCurrentComponent } from './components/weather-current/weather-current.component';
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 import { WeatherDetailComponent } from './components/weather-detail/weather-detail.component';
-import { SettingsComponent } from './components/settings/settings.component';
 import { DonationsComponent } from './components/donations/donations.component';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -24,7 +23,6 @@ import { ThemeService } from './services/theme.service';
     WeatherCurrentComponent,
     WeatherForecastComponent,
     WeatherDetailComponent,
-    SettingsComponent,
     DonationsComponent,
     SearchComponent,
     HeaderComponent,
