@@ -1,4 +1,4 @@
-<div [ngClass]="themeService.getCurrentTheme() === 'dark' ? 'dark-theme' : 'light-theme'">
+<div class="dark">
   <app-header (showCurrentEvent)="showForecast = false" (showForecastEvent)="showForecast = true"></app-header>
 <div class="w-2/3 mx-auto">
   <app-search></app-search>

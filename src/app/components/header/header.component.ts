@@ -25,6 +25,7 @@ export class HeaderComponent {
   @Output() showForecastEvent = new EventEmitter<void>();
 
   showForecast: boolean = false;
+  isDarkTheme: boolean = true;
 
   constructor(public weatherService: WeatherService, private titleService: Title, public themeService: ThemeService) { }
 
@@ -45,4 +46,13 @@ export class HeaderComponent {
   get buttonText(): string {
     return this.showForecast ? 'Météo actuelle' : 'Prévisions';
   }
+  toggleTheme() {
+    this.themeService.toggleTheme();
+    this.isDarkTheme = this.themeService.isDarkTheme();
+  }
+
+  ngOnInit() {
+    this.isDarkTheme = this.themeService.isDarkTheme();
+  }
+
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from "../../services/weather.service";
+import {ThemeService} from "../../services/theme.service";
 
 @Component({
   selector: 'app-weather-current',
@@ -10,7 +11,7 @@ export class WeatherCurrentComponent implements OnInit {
   weather: any;
   errorMessage: string = '';
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, public themeService: ThemeService) {
   }
 
   ngOnInit(): void {

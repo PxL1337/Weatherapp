@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from "../../services/weather.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {ThemeService} from "../../services/theme.service";
 
 @Component({
   selector: 'app-weather-forecast',
@@ -28,7 +29,7 @@ export class WeatherForecastComponent implements OnInit{
   slideChangeTimeout: any;
   timeoutId: any;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, public themeService: ThemeService) {}
   ngOnInit(): void {
     this.weatherService.forecast$.subscribe(
       data => {
