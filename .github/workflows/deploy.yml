@@ -20,7 +20,7 @@ jobs:
 
       # Build the app
       - name: Build
-        run: npm run build -- --prod
+        run: npm run build --prod
 
       # Deploy to FTP
       - name: Deploy to FTP
