@@ -20,7 +20,7 @@ jobs:
 
       # Build the app
       - name: Build
-        run: npx ng build --prod --base-href /WeatherApp/
+        run: npm run build --prod
 
       # List the contents of the build directory (for debugging)
       - name: List build directory contents
