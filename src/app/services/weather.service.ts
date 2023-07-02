@@ -18,7 +18,6 @@ export class WeatherService {
 
   dataLoaded: boolean = false;
 
-
   constructor(private http: HttpClient) {
     //   if (!this.API_KEY || this.API_KEY === 'API_KEY') {
     //   throw new Error('Clé API non définie. Veuillez définir la variable d\'environnement API_KEY.');
@@ -75,7 +74,7 @@ export class WeatherService {
       next: data => {
         const forecasts = data.list.map(forecast => ({
           ...forecast,
-          dt_txt: new Date(forecast.dt ? forecast.dt * 1000 : Date.now()),
+          dt_txt: new Date(forecast.dt ? forecast.dt * 1000 : Date.now()), // Convert Unix timestamp to JavaScript Date
         }));
         console.log("ForecastByCitydata: ", data)
         this.forecastSubject.next(data.list);
@@ -95,7 +94,7 @@ export class WeatherService {
       next: data => {
         const forecasts = data.list.map(forecast => ({
           ...forecast,
-          dt_txt: new Date(forecast.dt ? forecast.dt * 1000 : Date.now()),
+          dt_txt: new Date(forecast.dt ? forecast.dt * 1000 : Date.now()), // Convert Unix timestamp to JavaScript Date
         }));
         console.log("ForecastbyCoordsdata: ", data)
         this.forecastSubject.next(data.list);
