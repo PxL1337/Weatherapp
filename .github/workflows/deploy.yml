@@ -23,12 +23,12 @@ jobs:
         run: npm run build --prod
 
       # Deploy to FTP
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - name: Deploy to sFTP
+        uses: garygrossgarten/github-action-scp@release
         with:
-          server: demos.pixdev.ovh
-          port: 41337
+          local: dist/weatherapp/*
+          remote: /var/www/my_webapp__3/www/
+          host: demos.pixdev.ovh
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /www/
-          local-dir: dist/weatherapp/
+          port: 41337
