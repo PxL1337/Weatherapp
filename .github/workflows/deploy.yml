@@ -31,8 +31,8 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           local: dist/weatherapp
-          remote: /www/
-          host: demos.pixdev.ovh
+          remote: ${{ secrets.FTP_DIR }}
+          host: ${{ secrets.FTP_ADDRESS }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 41337
+          port: ${{ secrets.FTP_PORT }}
