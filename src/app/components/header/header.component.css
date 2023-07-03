@@ -39,3 +39,20 @@
   opacity: 1;
   transform: translateX(-50%);
 }
+
+@keyframes bounce-letter {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.25em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-bounce-letter {
+  display: inline-block;
+  animation: bounce-letter 1.5s infinite;
+}

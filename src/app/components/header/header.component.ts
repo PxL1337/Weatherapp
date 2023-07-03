@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit{
 
   showForecast: boolean = false;
   isDarkTheme: boolean = true;
+  letters: string[] = [];
 
   constructor(public weatherService: WeatherService, private titleService: Title, public themeService: ThemeService) { }
 
@@ -52,7 +53,21 @@ export class HeaderComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.splitTextIntoLetters();
     this.isDarkTheme = this.themeService.isDarkTheme();
+  }
+
+  splitTextIntoLetters() {
+    const text = 'Work In Progress...';
+    const words = text.split(' ');
+    this.letters = words.reduce((acc: string[], word: string, index: number) => {
+      const letters = word.split('');
+      if (index === 0) {
+        return [...letters];
+      } else {
+        return [...acc, ' ', ...letters];
+      }
+    }, []);
   }
 
 }
