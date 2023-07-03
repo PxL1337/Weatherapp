@@ -20,9 +20,7 @@ jobs:
 
       # Build the app
       - name: Build
-        run: npm run build --prod
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
+        run: npm run build --prod --env.API_KEY=${{ secrets.API_KEY }}
 
       # List the contents of the build directory (for debugging)
       - name: List build directory contents
