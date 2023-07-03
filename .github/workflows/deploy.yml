@@ -20,7 +20,11 @@ jobs:
 
       # Build the app
       - name: Build
-        run: npm run build --prod --env.API_KEY=${{ secrets.API_KEY }}
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          npm run build --prod
+          sed -i "s/API_KEY_PLACEHOLDER/${API_KEY}/g" dist/weatherapp/environment.prod.js
 
       # List the contents of the build directory (for debugging)
       - name: List build directory contents
