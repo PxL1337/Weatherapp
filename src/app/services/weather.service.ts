@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, shareReplay, Subject} from "rxjs";
 import {DayWeather} from "../models/day-weather";
 import {ForecastWeather} from "../models/forecast-weather";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
-  API_KEY: string = 'af5f145c588d6c2be0e393807dbfdb53';
+  API_KEY: string = environment.apiKey;
 
   weatherSubject: Subject<DayWeather|undefined> = new Subject<DayWeather|undefined>();
   forecastSubject: Subject<ForecastWeather[]|undefined> = new Subject<ForecastWeather[]|undefined>()
@@ -27,7 +28,7 @@ export class WeatherService {
   }
 
   getCurrentMeteo(city: string) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},FR&lang=FR&units=metric&appid=${this.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},FR&lang=FR&units=metric&appid=${this['API_KEY']}`;
 
     this.http.get<DayWeather>(url).subscribe({
       next: data => {
@@ -47,7 +48,7 @@ export class WeatherService {
     })
   }
   getCurrentMeteoByCoords(lat: number, lon: number) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=FR&appid=${this.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=FR&appid=${this['API_KEY']}`;
 
   this.http.get<DayWeather>(url).subscribe({
     next: data => {
@@ -68,7 +69,7 @@ export class WeatherService {
 }
 
  getForecastMeteoByCity(city: string) {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},FR&lang=FR&units=metric&appid=${this.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},FR&lang=FR&units=metric&appid=${this['API_KEY']}`;
 
    this.http.get<{ list: ForecastWeather[] }>(url).subscribe({
       next: data => {
@@ -88,7 +89,7 @@ export class WeatherService {
   }
 
   getForecastMeteoByCoords(lat: number, lon: number) {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=FR&appid=${this.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=FR&appid=${this['API_KEY']}`;
 
     this.http.get<{ list: ForecastWeather[] }>(url).subscribe({
       next: data => {
