@@ -10,7 +10,8 @@
            name="city"
            placeholder="Ville"
            [(ngModel)]="city"
-           class="border border-gray-600 text-2xl flex-grow px-4">
+           (input)="onInput()"
+           class="border border-gray-600 text-2xl flex-grow px-4 text-black">
     <button
       (click)="searchCity()"
       class="bg-blue-700 rounded-r-lg text-2xl text-white px-3 py-2">
@@ -19,4 +20,5 @@
       </svg>
     </button>
   </form>
+  <div *ngIf="errorMessage" class="error-message text-red-900 text-center font-bold">{{ errorMessage }}</div>
 </div>
