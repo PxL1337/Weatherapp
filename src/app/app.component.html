@@ -1,9 +1,11 @@
 <div class="dark">
   <app-header (showCurrentEvent)="showForecast = false" (showForecastEvent)="showForecast = true"></app-header>
-<div class="w-2/3 mx-auto">
-  <app-search></app-search>
-  <app-weather-current [@fadeInOut]="!showForecast"></app-weather-current>
-  <app-weather-forecast [@fadeInOut]="showForecast"></app-weather-forecast>
-</div>
-<app-footer></app-footer>
+  <div class="w-2/3 mx-auto">
+    <div class="mobile-container">
+      <app-search></app-search>
+      <app-weather-current [@fadeInOut]="!showForecast"></app-weather-current>
+      <app-weather-forecast [@fadeInOut]="showForecast"></app-weather-forecast>
+    </div>
+  </div>
+  <app-footer></app-footer>
 </div>
