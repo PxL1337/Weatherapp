@@ -23,5 +23,7 @@
       </svg>
     </button>
   </form>
-  <div *ngIf="errorMessage" class="error-message text-red-900 text-center font-bold">{{ errorMessage }}</div>
+  <div *ngIf="errorMessage" class="error-tooltip absolute bg-red-500 text-white px-4 py-2 rounded-md top-full left-1/2 transform -translate-x-1/2">
+    {{ errorMessage }}
+  </div>
 </div>
