@@ -1,14 +1,14 @@
-<div class="flex flex-grow justify-center items-center h-full">
-  <button (click)="prevSlide()" class="nav-button">
+<div class="flex justify-center items-center">
+  <button (click)="prevSlide()" class="nav-button mr-10">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
          class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
     </svg>
   </button>
 
-  <div [ngSwitch]="currentSlideIndex" *ngIf="forecasts; else na" class="forecast-slider flex-grow text-center relative">
+  <div [ngSwitch]="currentSlideIndex" *ngIf="forecasts; else na" class="forecast">
     <ng-container *ngFor="let forecast of forecasts; let i = index">
-      <div *ngSwitchCase="i" class="forecast-item absolute w-full" [@fadeInOut]="">
+      <div *ngSwitchCase="i" class="forecast-item" [@fadeInOut]="">
         <div class="flex justify-center">
           <img [src]="'http://openweathermap.org/img/wn/'+forecast.weather[0].icon+'@4x.png'"
                class="bg-gray-300 rounded-full p-4"
@@ -30,7 +30,7 @@
           </ul>
         </div>
         <div class="mt-5">
-          <div class="bg-teal-300 rounded text-xl font-bold text-center p-4">
+          <div class="bg-blue-700 rounded text-xl font-bold text-center p-4">
             {{ getDateString(forecast.dt_txt) }}
           </div>
         </div>
@@ -46,7 +46,7 @@
     </div>
   </ng-template>
 
-  <button (click)="nextSlide()" class="nav-button self-center m-auto">
+  <button (click)="nextSlide()" class="nav-button ml-10">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
          class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>

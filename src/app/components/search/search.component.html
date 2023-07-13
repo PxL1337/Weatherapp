@@ -1,4 +1,4 @@
-<div class="my-4 flex justify-center items-center">
+<div class="my-4 flex flex-col justify-center items-center">
   <form ngForm class="flex justify-center">
     <button (click)="getLocation()"
       type="button"
@@ -23,7 +23,7 @@
       </svg>
     </button>
   </form>
-  <div *ngIf="errorMessage" class="error-tooltip absolute bg-red-500 text-white px-4 py-2 rounded-md top-full left-1/2 transform -translate-x-1/2">
+  <div *ngIf="errorMessage" class="error-tooltip bg-red-500 text-white px-4 py-2 rounded-md top-full left-1/2 transform mt-2">
     {{ errorMessage }}
   </div>
 </div>
