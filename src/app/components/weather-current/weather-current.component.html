@@ -9,11 +9,21 @@
   </div>
   <div class="mt-5">
     <ul class="text-center text-xl">
-      <li class="py-2 border-b border-gray-300">Température ressentie : <span class="fs-4">{{ weather.main.feels_like }}°</span></li>
-      <li class="py-2 border-b border-gray-300">Température : {{ weather.main.temp_min }}° &gt; <span class="fs-4">{{ weather.main.temp }}°</span> &gt; {{ weather.main.temp_max }}°</li>
-      <li class="py-2 border-b border-gray-300">Humidité : {{ weather.main.humidity }}%</li>
-      <li class="py-2 border-b border-gray-300">Pression : {{ weather.main.pressure }}hPa</li>
-      <li class="py-2">Vent : {{weather.wind.deg}}° - {{weather.wind.speed}}Km/h</li>
+      <li class="py-2 border-b border-gray-300">
+        <span class="text-gray-500">Température ressentie :</span> <span class="fs-4">{{ weather.main.feels_like }}°</span>
+      </li>
+      <li class="py-2 border-b border-gray-300">
+        <span class="text-gray-500">Température :</span> {{ weather.main.temp_min }}° &gt; <span class="fs-4">{{ weather.main.temp }}°</span> &gt; {{ weather.main.temp_max }}°
+      </li>
+      <li class="py-2 border-b border-gray-300">
+        <span class="text-gray-500">Humidité :</span> {{ weather.main.humidity }}%
+      </li>
+      <li class="py-2 border-b border-gray-300">
+        <span class="text-gray-500">Pression :</span> {{ weather.main.pressure }}hPa
+      </li>
+      <li class="py-2">
+        <span class="text-gray-500">Vent :</span> {{weather.wind.deg}}° - {{weather.wind.speed}}Km/h
+      </li>
     </ul>
   </div>
   <div class="mt-5">
@@ -30,3 +40,4 @@
     Pas de données.
   </div>
 </ng-template>
+
