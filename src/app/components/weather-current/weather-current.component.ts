@@ -15,6 +15,7 @@ export class WeatherCurrentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.weatherService.weather$.subscribe(
       data => {
         console.log("Current dans display : ",data);

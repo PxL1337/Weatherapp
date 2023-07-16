@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WeatherService} from "../../services/weather.service";
 
 @Component({
@@ -6,12 +6,17 @@ import {WeatherService} from "../../services/weather.service";
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements  OnInit{
   city = '';
   errorMessage: string = '';
 
   constructor(private weatherService: WeatherService) {
   }
+
+  ngOnInit(): void {
+    this.getLocation();
+  }
+
   searchCity() {
     if (!this.city) {
       this.errorMessage = 'Veuillez entrer le nom d\'une ville.';

@@ -1,4 +1,4 @@
-<div *ngIf="weather; else na">
+<div *ngIf="weather; else na" class="">
   <div class="flex justify-center">
     <img [src]="'http://openweathermap.org/img/wn/'+weather.weather[0].icon+'@4x.png'"
          class="bg-gray-300 rounded-full p-4"
@@ -9,14 +9,14 @@
   </div>
   <div class="mt-5">
     <ul class="text-center text-xl">
-      <li class="py-2 border-b border-gray-300">
+      <!--<li class="py-2 border-b border-gray-300">
         <span class="text-gray-500">Température ressentie :</span> <span class="fs-4">{{ weather.main.feels_like }}°</span>
+      </li>-->
+      <li class="py-2 border-b border-gray-300 flex justify-center">
+        <span class="text-white-700 mr-2 material-symbols-outlined">device_thermostat</span> {{ weather.main.temp }}°C
       </li>
-      <li class="py-2 border-b border-gray-300">
-        <span class="text-gray-500">Température :</span> {{ weather.main.temp_min }}° &gt; <span class="fs-4">{{ weather.main.temp }}°</span> &gt; {{ weather.main.temp_max }}°
-      </li>
-      <li class="py-2 border-b border-gray-300">
-        <span class="text-gray-500">Humidité :</span> {{ weather.main.humidity }}%
+      <li class="py-2 border-b border-gray-300 flex justify-center">
+        <span class="text-white-700 mr-2 material-symbols-outlined">humidity_percentage</span> {{ weather.main.humidity }}%
       </li>
       <li class="py-2 border-b border-gray-300">
         <span class="text-gray-500">Pression :</span> {{ weather.main.pressure }}hPa
@@ -26,7 +26,7 @@
       </li>
     </ul>
   </div>
-  <div class="mt-5">
+  <div class="mt-5 mb-20">
     <div class="bg-blue-700 rounded text-xl font-bold text-center p-4">
       {{weather.name | uppercase }} / {{ weather.sys.country }}
       - Levé du soleil : {{ weather.sys.sunrise*1000 | date : 'HH:mm:ss' }}
