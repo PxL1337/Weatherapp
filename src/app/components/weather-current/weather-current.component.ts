@@ -25,34 +25,6 @@ export class WeatherCurrentComponent implements OnInit {
       this.errorMessage = error;
     });
   }
-  // weatherData: any;
-  //
-  // constructor(private weatherService: WeatherService) { }
-
-  // ngOnInit(): void {
-  //   navigator.geolocation.getCurrentPosition(position => {
-  //     this.weatherService.getCurrentWeather(position.coords.latitude, position.coords.longitude)
-  //       .subscribe(data => {
-  //         this.weatherData = data;
-  //       }, error => {
-  //         this.weatherData = null;
-  //         alert(error);
-  //       });
-  //   });
-  // }
-  //
-  // promptForCity() {
-  //   const city = prompt('Enter city name');
-  //   if (city) {
-  //     this.weatherService.getWeatherByCityName(city)
-  //       .subscribe(data => {
-  //         this.weatherData = data;
-  //       }, error => {
-  //         this.weatherData = null;
-  //         alert(error);
-  //       });
-  //   }
-  // }
 }
 
 
