@@ -1,10 +1,15 @@
 <div *ngIf="weather; else na" class="">
-  <div class="flex justify-center">
-    <img [src]="'http://openweathermap.org/img/wn/'+weather.weather[0].icon+'@4x.png'"
-         class="bg-gray-300 rounded-full p-4"
-         alt="">
+  <div class="flex justify-center mb-4 text-2xl">
+    {{weather.name | uppercase }} / {{ weather.sys.country }}
   </div>
-  <div class="text-center text-4xl">
+  <div class="flex justify-center">
+    <div>
+      <img [src]="'http://openweathermap.org/img/wn/'+weather.weather[0].icon+'@2x.png'"
+           class="bg-gray-300 rounded-full p-4"
+           alt="">
+    </div>
+  </div>
+  <div class="text-center text-3xl">
     {{weather.weather[0].description | titlecase}}
   </div>
   <div class="mt-5">
@@ -12,25 +17,25 @@
       <!--<li class="py-2 border-b border-gray-300">
         <span class="text-gray-500">Température ressentie :</span> <span class="fs-4">{{ weather.main.feels_like }}°</span>
       </li>-->
-      <li class="py-2 border-b border-gray-300 flex justify-center">
-        <span class="text-white-700 mr-2 material-symbols-outlined">device_thermostat</span> {{ weather.main.temp }}°C
-      </li>
-      <li class="py-2 border-b border-gray-300 flex justify-center">
-        <span class="text-white-700 mr-2 material-symbols-outlined">humidity_percentage</span> {{ weather.main.humidity }}%
+      <li class="py-2 border-b border-gray-300">
+        <span class="text-white-700 mr-2 wi wi-thermometer"></span> {{ weather.main.temp }}°C
       </li>
       <li class="py-2 border-b border-gray-300">
-        <span class="text-gray-500">Pression :</span> {{ weather.main.pressure }}hPa
+        <span class="text-white-700 mr-2 wi wi-humidity"></span> {{ weather.main.humidity }}%
       </li>
-      <li class="py-2">
-        <span class="text-gray-500">Vent :</span> {{weather.wind.deg}}° - {{weather.wind.speed}}Km/h
+      <li class="py-2 border-b border-gray-300">
+        <span class="text-white-700 mr-2"><i class="wi wi-barometer"></i></span> {{ weather.main.pressure }}hPa
+      </li>
+      <li class="py-2 flex justify-center">
+        <span class="text-white-700"><i class="wi wi-strong-wind mr-2"></i></span>{{weather.wind.deg}}° <i class="wi wi-wind from-{{weather.wind.deg}}-deg mr-2"></i> - {{weather.wind.speed}}Km/h
       </li>
     </ul>
   </div>
   <div class="mt-5 mb-20">
-    <div class="bg-blue-700 rounded text-xl font-bold text-center p-4">
-      {{weather.name | uppercase }} / {{ weather.sys.country }}
-      - Levé du soleil : {{ weather.sys.sunrise*1000 | date : 'HH:mm:ss' }}
-      - Couché du soleil : {{ weather.sys.sunset*1000 | date : 'HH:mm:ss' }}
+    <div class="bg-orange-500 rounded text-xl font-bold text-center p-4 flex justify-between">
+       <span><i class="wi wi-sunrise"></i> {{ weather.sys.sunrise*1000 | date : 'HH:mm:ss' }}</span>
+       <span><i class="wi wi-direction-right text-3xl"></i></span>
+       <span>{{ weather.sys.sunset*1000 | date : 'HH:mm:ss' }} <i class="wi wi-sunset"></i></span>
     </div>
   </div>
 </div>
