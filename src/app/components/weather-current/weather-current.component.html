@@ -27,15 +27,19 @@
         <span class="text-white-700 mr-2"><i class="wi wi-barometer"></i></span> {{ weather.main.pressure }}hPa
       </li>
       <li class="py-2 flex justify-center">
-        <span class="text-white-700"><i class="wi wi-strong-wind mr-2"></i></span>{{weather.wind.deg}}° <i class="wi wi-wind from-{{weather.wind.deg}}-deg mr-2"></i> - {{weather.wind.speed}}Km/h
+        <span class="text-white-700">
+          <i class="wi wi-strong-wind mr-2"></i>
+        </span>{{weather.wind.deg}}°
+        <i class="wi wi-wind from-{{weather.wind.deg}}-deg mr-2">
+        </i> - {{weather.wind.speed}}Km/h
       </li>
     </ul>
   </div>
-  <div class="mt-5 mb-4">
+  <div class="mt-5 mb-20">
     <div class="bg-orange-500 rounded text-xl font-bold text-center p-4 flex justify-between">
-       <span><i class="wi wi-sunrise"></i> {{ weather.sys.sunrise*1000 | date : 'HH:mm:ss' }}</span>
-       <span><i class="wi wi-direction-right text-3xl"></i></span>
-       <span>{{ weather.sys.sunset*1000 | date : 'HH:mm:ss' }} <i class="wi wi-sunset"></i></span>
+      <span><i class="wi wi-sunrise"></i> {{ weather.sys.sunrise * 1000 | date : 'HH:mm:ss' }}</span>
+      <span><i class="wi wi-direction-right text-3xl"></i></span>
+      <span>{{ weather.sys.sunset * 1000 | date : 'HH:mm:ss' }} <i class="wi wi-sunset"></i></span>
     </div>
   </div>
 </div>
